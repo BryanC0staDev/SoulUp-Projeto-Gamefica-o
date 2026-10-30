@@ -8,25 +8,18 @@ import java.util.ArrayList;
 
 public class UsuarioBo {
     //Validações
-    private void validarCpf(String cpf) {
-        if (cpf == null || cpf.length() != 11) {
-            throw new IllegalArgumentException("CPF deve ter 11 números.");
-        }
-    }
+
 
     private void validarUsuario(Usuarios u) {
         if (u == null) {
             throw new IllegalArgumentException("Usuário não pode ser nulo.");
         }
-        validarCpf(u.getCpf());
+
         if (u.getNome() == null || u.getNome().trim().isEmpty()) {
             throw new IllegalArgumentException("Nome é obrigatório.");
         }
         if (u.getEmail() == null || !u.getEmail().contains("@")) {
             throw new IllegalArgumentException("Email inválido.");
-        }
-        if (u.getSenha() == null || u.getSenha().length() < 6) {
-            throw new IllegalArgumentException("Senha deve ter pelo menos 6 caracteres.");
         }
         if (u.getIdade() <= 0) {
             throw new IllegalArgumentException("Idade inválida.");
@@ -86,7 +79,7 @@ public class UsuarioBo {
     public void incrementarCurtidasBo(String cpf) throws SQLException, ClassNotFoundException {
         UsuarioDao usuarioDao = new UsuarioDao();
 
-        validarCpf(cpf);
+
         usuarioDao.incrementarCurtidas(cpf);
     }
 
@@ -94,7 +87,7 @@ public class UsuarioBo {
     public void incrementarPostsBo(String cpf) throws SQLException, ClassNotFoundException {
         UsuarioDao usuarioDao = new UsuarioDao();
 
-        validarCpf(cpf);
+
         usuarioDao.incrementarPosts(cpf);
     }
 
@@ -102,7 +95,6 @@ public class UsuarioBo {
     public void incrementarSeguindoBo(String cpf) throws SQLException, ClassNotFoundException {
         UsuarioDao usuarioDao = new UsuarioDao();
 
-        validarCpf(cpf);
         usuarioDao.incrementarSeguindo(cpf);
     }
 
@@ -120,7 +112,6 @@ public class UsuarioBo {
     public void excluirBo(String cpf) throws SQLException, ClassNotFoundException {
         UsuarioDao usuarioDao = new UsuarioDao();
 
-        validarCpf(cpf);
         usuarioDao.excluir(cpf);
     }
 

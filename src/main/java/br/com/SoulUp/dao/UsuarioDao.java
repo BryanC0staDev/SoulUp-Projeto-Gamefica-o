@@ -76,7 +76,7 @@ public class UsuarioDao {
 
             Endereco endereco = new Endereco();
             endereco.setCep(rs.getString("cep"));
-            endereco.setLocalidade(rs.getString("rua"));
+            endereco.setLogradouro(rs.getString("rua"));
             endereco.setNumero(rs.getString("numero"));
             endereco.setBairro(rs.getString("bairro"));
             endereco.setLocalidade(rs.getString("cidade"));

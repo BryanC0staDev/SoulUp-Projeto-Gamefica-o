@@ -24,9 +24,7 @@ public class PostsBo {
         if (post.getConteudo().length() > LIMITE_CARACTERES) {
             throw new IllegalArgumentException("O post pode ter no máximo " + LIMITE_CARACTERES + " caracteres.");
         }
-        if (post.getCpfUsuario() == null || post.getCpfUsuario().length() != 11) {
-            throw new IllegalArgumentException("CPF do autor inválido.");
-        }
+
         postsDao.inserir(post);
     }
 
