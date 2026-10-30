@@ -52,35 +52,8 @@ public class UsuarioController {
     // Ranking
     @GetMapping("/ranking")
     public ArrayList<Usuarios> buscarRankingRs() throws SQLException, ClassNotFoundException {
+
         return usuarioBo.buscarRankingUsuariosBo();
-    }
-
-    // Curtidas
-    @GetMapping("/{cpf}/curtidas")
-    public ResponseEntity<Void> incrementarCurtidasRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
-        usuarioBo.incrementarCurtidasBo(cpf);
-        return ResponseEntity.ok().build();
-    }
-
-    // Posts
-    @GetMapping("/{cpf}/posts")
-    public ResponseEntity<Void> incrementarPostsRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
-        usuarioBo.incrementarPostsBo(cpf);
-        return ResponseEntity.ok().build();
-    }
-
-    // Seguindo
-    @GetMapping("/{cpf}/seguindo")
-    public ResponseEntity<Void> incrementarSeguindoRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
-        usuarioBo.incrementarSeguindoBo(cpf);
-        return ResponseEntity.ok().build();
-    }
-
-    // Seguidor (busca pelo nome)
-    @GetMapping("/{nome}/seguidores")
-    public ResponseEntity<Void> incrementarSeguidorRs(@PathVariable String nome) throws SQLException, ClassNotFoundException {
-        usuarioBo.incrementarSeguidorBo(nome);
-        return ResponseEntity.ok().build();
     }
 
     // Excluir
