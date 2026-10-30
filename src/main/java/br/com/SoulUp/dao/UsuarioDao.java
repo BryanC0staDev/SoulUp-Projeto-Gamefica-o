@@ -204,21 +204,34 @@ public class UsuarioDao {
         stmt.close();
         conn.close();
     }
-    public ArrayList<Usuarios> buscarRankingUsuarios() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT nome, apelido, pontos FROM TB_USUARIOS_JAVA ORDER BY pontos DESC";
+    public ArrayList<Usuarios> buscarRankingUsuarios() throws SQLException  {
+        String sql = "SELECT * FROM TB_USUARIOS_JAVA ORDER BY pontos DESC";
         ArrayList<Usuarios> ranking = new ArrayList<>();
 
         Connection conn = new ConexaoFactory().cn();
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            Usuarios u = new Usuarios();
-            u.setNome(rs.getString("nome"));
-            u.setApelido(rs.getString("apelido"));
-            u.setPontos(rs.getInt("pontos"));
-            ranking.add(u);
-        }
+            while (rs.next()) {
+
+                Usuarios u = new Usuarios();
+
+                u.setNome(rs.getString("nome"));
+                u.setApelido(rs.getString("apelido"));
+                u.setCpf(rs.getString("cpf"));
+                u.setEmail(rs.getString("email"));
+                u.setSexo(rs.getString("sexo"));
+                u.setIdade(rs.getInt("idade"));
+
+                u.setPontos(rs.getInt("pontos"));
+                u.setCurtidas(rs.getInt("curtidas"));
+                u.setQntPosts(rs.getInt("qnt_posts"));
+                u.setSeguidores(rs.getInt("seguidores"));
+                u.setSeguindo(rs.getInt("seguindo"));
+
+                ranking.add(u);
+            }
+
 
         rs.close();
         stmt.close();
