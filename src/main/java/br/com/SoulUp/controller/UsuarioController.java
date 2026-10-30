@@ -56,28 +56,28 @@ public class UsuarioController {
     }
 
     // Curtidas
-    @PatchMapping("/{cpf}/curtidas")
+    @GetMapping("/{cpf}/curtidas")
     public ResponseEntity<Void> incrementarCurtidasRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
         usuarioBo.incrementarCurtidasBo(cpf);
         return ResponseEntity.ok().build();
     }
 
     // Posts
-    @PatchMapping("/{cpf}/posts")
+    @GetMapping("/{cpf}/posts")
     public ResponseEntity<Void> incrementarPostsRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
         usuarioBo.incrementarPostsBo(cpf);
         return ResponseEntity.ok().build();
     }
 
     // Seguindo
-    @PatchMapping("/{cpf}/seguindo")
+    @GetMapping("/{cpf}/seguindo")
     public ResponseEntity<Void> incrementarSeguindoRs(@PathVariable String cpf) throws SQLException, ClassNotFoundException {
         usuarioBo.incrementarSeguindoBo(cpf);
         return ResponseEntity.ok().build();
     }
 
     // Seguidor (busca pelo nome)
-    @PatchMapping("/{nome}/seguidores")
+    @GetMapping("/{nome}/seguidores")
     public ResponseEntity<Void> incrementarSeguidorRs(@PathVariable String nome) throws SQLException, ClassNotFoundException {
         usuarioBo.incrementarSeguidorBo(nome);
         return ResponseEntity.ok().build();
